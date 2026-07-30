@@ -1,0 +1,55 @@
+/* ── Text Input ── */
+
+.text-input-toggle {
+  display: block;
+  margin: 0 auto 24px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.text-input-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.text-input {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  animation: slideUp 0.3s ease;
+}
+
+.text-input__area {
+  width: 100%;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-reading);
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.text-input__area:focus {
+  border-color: var(--accent);
+}
+
+.text-input__area::placeholder {
+  color: var(--text-dim);
+}
+
+.text-input__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}

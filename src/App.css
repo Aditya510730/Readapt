@@ -1,0 +1,29 @@
+/* ── App layout ── */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  flex: 1;
+  padding: 32px;
+  padding-right: 352px; /* Make room for control panel */
+  max-width: 100%;
+}
+
+.app__empty {
+  max-width: 720px;
+  margin: 60px auto;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 16px;
+}
+
+/* When control panel is closed, use full width */
+@media (max-width: 900px) {
+  .app__main {
+    padding-right: 32px;
+  }
+}
