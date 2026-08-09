@@ -5,7 +5,7 @@
  *  PERSON B: This is your integration point!
  *
  *  Replace the `simplify()` function body with your actual
- *  HuggingFace Inference API call or local model call.
+ *  HuggingFace Inasyncference API call or local model call.
  *
  *  Contract:
  *    Input:  a single sentence (string)
@@ -25,27 +25,23 @@ const llmService = {
    * @param {string} sentence — the original sentence
    * @returns {Promise<string>} — the simplified version
    */
-  async simplify(sentence) {
-    // ── MOCK IMPLEMENTATION (replace with real LLM) ──────────
-    // Simulates network delay + returns a rule-based simplification
-    await new Promise((r) => setTimeout(r, 800 + Math.random() * 700));
+   async simplify(sentence) {
+  const response = await fetch("http://localhost:3001/simplify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ sentence }),
+  });
 
-    return mockSimplify(sentence);
-    // ── END MOCK ─────────────────────────────────────────────
+  if (!response.ok) {
+    throw new Error("Failed to simplify sentence");
+  }
 
-    // ── REAL IMPLEMENTATION (uncomment when ready) ───────────
-    // const response = await fetch('YOUR_API_ENDPOINT', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     inputs: `Simplify this sentence for a struggling reader: "${sentence}"`,
-    //     parameters: { max_new_tokens: 100, temperature: 0.3 },
-    //   }),
-    // });
-    // const data = await response.json();
-    // return data[0]?.generated_text || sentence;
-    // ── END REAL ─────────────────────────────────────────────
-  },
+  const data = await response.json();
+
+  return data.simplified;
+},
 
   /**
    * Request simplification for a sentence index and broadcast result.
