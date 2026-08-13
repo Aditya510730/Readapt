@@ -4,8 +4,9 @@ import Reader, { countSentences } from './components/Reader.jsx';
 import ControlPanel from './components/ControlPanel.jsx';
 import TextInput from './components/TextInput.jsx';
 import bus from './services/eventBus.js';
-import sampleTexts from './utils/sampleTexts.js';
+import { startGazeSocket } from './gazeSocketClient.js';
 import './App.css';
+import sampleTexts from './utils/sampleTexts.js';
 
 const TEXT_OPTIONS = [
   { key: 'neuroscience', label: 'Neuroscience' },
@@ -34,6 +35,7 @@ export default function App() {
 
     setStats({ total: totalSentences, struggling: 0, simplified: 0 });
 
+    startGazeSocket();
     const u1 = bus.on('gaze:struggle', ({ sentenceIndex }) => {
       struggling.add(sentenceIndex);
       setStats((s) => ({ ...s, struggling: struggling.size }));
