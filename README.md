@@ -1,4 +1,4 @@
-# ThinkNeuro Reader
+# ReAdapt
 
 Real-time adaptive reading tool that detects reading struggles via webcam eye-tracking and automatically simplifies difficult sentences using an LLM.
 
