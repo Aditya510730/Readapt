@@ -6,7 +6,7 @@ export default function Header({ stats }) {
     <header className="header">
       <div className="header__brand">
         <span className="header__logo">&#129504;</span>
-        <h1 className="header__title">ThinkNeuro Reader</h1>
+        <h1 className="header__title">Readapt</h1>
         <span className="header__tag">Adaptive Reading Assistant</span>
       </div>
       {stats && (
