@@ -25,8 +25,9 @@ const llmService = {
    * @param {string} sentence — the original sentence
    * @returns {Promise<string>} — the simplified version
    */
-   async simplify(sentence) {
-  const response = await fetch("http://localhost:3001/simplify", {
+      async simplify(sentence) {
+  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  const response = await fetch(`${apiBase}/simplify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
