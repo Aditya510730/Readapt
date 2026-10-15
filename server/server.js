@@ -38,14 +38,16 @@ ${sentence}`,
     res.json({
       simplified: response.text.trim(),
     });
-  } catch (error) {
+    } catch (error) {
     console.error(error);
     res.status(500).json({
       error: "Failed to simplify sentence",
+      detail: error.message,
     });
   }
 });
 
-app.listen(3001, () => {
-  console.log("LLM server running on http://localhost:3001");
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`LLM server running on port ${PORT}`);
 });
